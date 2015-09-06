@@ -60,7 +60,8 @@
 		</form>
 	</div>
 	</div>
-	<div>firstName:{{firstName}}</div>
+	<!-- <div>firstName:{{firstName}}</div>
+	<div>lastName:{{lastName}}</div> -->
 
 </div>
 
@@ -74,7 +75,12 @@ myApp.controller('submit', function($scope){
 	$scope.phoneNo="";
 	$scope.myData= new Firebase("https://amber-heat-1015.firebaseio.com/Students");
 	$scope.submitStudent=function(){
-		$scope.myData.push({Firstname: $scope.firstName});
+		$scope.myData.push({Firstname: $scope.firstName,
+			Lastname: $scope.lastName,
+			StudentID: $scope.studentID,
+			EmailAddress: $scope.email,
+		    PhoneNo: $scope.phoneNo}
+		)
 	};
 	
 });
