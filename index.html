@@ -14,7 +14,7 @@
 <!--angularjs-->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 <!--firebase-->
-<!--<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>-->
+<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 
 </head>
 <body >
@@ -72,9 +72,9 @@ myApp.controller('submit', function($scope){
 	$scope.studentID="";
 	$scope.email="";
 	$scope.phoneNo="";
-	
+	$scope.myData= new Firebase("https://amber-heat-1015.firebaseio.com/Students");
 	$scope.submitStudent=function(){
-		alert("this is added" + $scope.firstName);
+		$scope.myData.push({Firstname: $scope.firstName});
 	};
 	
 });
