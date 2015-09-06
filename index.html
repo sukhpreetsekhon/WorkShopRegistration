@@ -1,0 +1,85 @@
+<html>
+<head>
+	<title>Registration form</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!--<script src="index.js" type="text/javascript" charset="utf-8" async defer></script>-->
+<!--angularjs-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<!--firebase-->
+<!--<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>-->
+
+</head>
+<body >
+	<div class="container" ng-app="registration" ng-controller="submit">
+		
+
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		<form role="form">
+			<h2>Please Submit <small></small></h2>
+			<hr class="colorgraph">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+                        <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1" ng-model="firstName">
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2" ng-model="lastName">
+					</div>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<input type="text" name="student_ID" id="student_ID" class="form-control input-lg" placeholder="Student ID" tabindex="4" ng-model="studentID">
+			</div>
+			<div class="form-group">
+				<input type="text" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="3" ng-model="email">
+			</div>
+			
+				
+					<div class="form-group">
+						<input type="text" name="phoneNo" id="phoneNo" class="form-control input-lg" placeholder="Phone No" tabindex="5" ng-model="phoneNo">
+					</div>
+			<hr class="colorgraph">
+			<div class="row">
+				<div class="col-md-4 text-center " >
+					<input type="submit" value="Submit" class="btn btn-primary btn-block btn-lg" ng-click="submitStudent()" >
+				</div>
+				
+			</div>
+		</form>
+	</div>
+	</div>
+	<div>firstName:{{firstName}}</div>
+
+</div>
+
+<script >
+var myApp= angular.module('registration',[]);
+myApp.controller('submit', function($scope){
+	$scope.firstName="";
+	$scope.lastName="";
+	$scope.studentID="";
+	$scope.email="";
+	$scope.phoneNo="";
+	
+	$scope.submitStudent=function(){
+		alert("this is added" + $scope.firstName);
+	};
+	
+});
+</script>
+</body>
+
+
+</html>
