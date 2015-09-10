@@ -13,6 +13,8 @@
 <!--<script src="index.js" type="text/javascript" charset="utf-8" async defer></script>-->
 <!--angularjs-->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<!-- ngmessage-->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
 <!--firebase-->
 <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 
@@ -23,9 +25,11 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+
+    	<!--form-->
 		<form role="form" name="myForm" id="myForm" >
 
-			<h1>CCCC Club Git Work Shop</h1>
+			<h1>CIPS Git Work Shop</h1>
 			<h2>Please Submit<small>  All fields are mandatory</small></h2>
 			<hr class="colorgraph">
 			<div class="row">
@@ -33,17 +37,19 @@
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group" >
 
-                        <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1" ng-model="firstName" required>
+                        <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1" ng-model="firstName" ng-minlength="3" ng-pattern="[a-zA-Z] required>
+
+                        <p ng-show="myForm.first_name.$error.minlength" class="help-block">First Name is too short.</p>
                         
                     </div>
 				</div>
-				<!-- last name -->
+			<!-- lastname -->
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group" >
 
-						<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2" ng-model="lastName" required>
+						<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2" ng-model="lastName" ng-minlength="3" required>
 
-						
+						<p ng-show="myForm.last_name.$error.minlength" class="help-block">Last Name is too short.</p>
 
 					</div>
 				</div>
@@ -51,13 +57,18 @@
 			<!-- student Id -->
 			<div class="form-group">
 				<input type="text" name="student_ID" id="student_ID" class="form-control input-lg" placeholder="Student ID" tabindex="3" ng-model="studentID"  ng-minlength="9" ng-maxlength="9" ng-pattern="/^(0|[1-9][0-9]*)$/" required>
+
+				<p ng-show="myForm.student_ID.$error.minlength" class="help-block">StudentID is wrong.</p>
+			
+				<p ng-show="myForm.student_ID.$error.maxlength" class="help-block">StudentID is wrong.</p>
 			</div>
 
 		<!-- 	email -->
-			<div class="form-group">
-				<input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4" ng-model="email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"  data-bv-emailaddress="true"
-                data-bv-emailaddress-message="The input is not a valid email address" required>
-				<!-- <span class="error" ng-show="myForm.input.$error.email">Not valid email!</span> -->
+			<div class="form-group"  ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+				<input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4" ng-model="email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"  required>
+
+				<p ng-show="myForm.email.$invalid && !myForm.email.$pristine" class="help-block">Enter a valid email.</p>
+				
 			</div>
 
 			
